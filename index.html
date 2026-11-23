@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#1a73e8">
+    <meta name="description" content="MathBot Builder - Membuat Rule-Based Chatbot Pembelajaran Matematika">
+
+    <title>MathBot Builder</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- MathJax -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class='bx bx-bot'></i>
+            </div>
+
+            <div>
+                <h1>MathBot Builder</h1>
+                <p>Rule-Based Chatbot Pembelajaran Matematika</p>
+            </div>
+        </div>
+
+        <div class="top-actions">
+            <button class="btn btn-outline" onclick="resetProject()">
+                <i class='bx bx-reset'></i>
+                Reset
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+    <main class="container">
+
+        <!-- Progress -->
+        <div class="progress-wrapper">
+
+            <div class="progress-step active" data-step="1">
+                <span>1</span>
+                <p>Identitas</p>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step" data-step="2">
+                <span>2</span>
+                <p>Knowledge Base</p>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step" data-step="3">
+                <span>3</span>
+                <p>Preview</p>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step" data-step="4">
+                <span>4</span>
+                <p>Testing</p>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step" data-step="5">
+                <span>5</span>
+                <p>Export</p>
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             SECTION 1
+        ========================== -->
+        <section class="panel step-panel active" id="step1">
+
+            <div class="panel-heading">
+                <div>
+                    <span class="section-number">01</span>
+                    <h2>Identitas Chatbot</h2>
+                    <p>Isi informasi dasar chatbot yang akan dibuat.</p>
+                </div>
+
+                <i class='bx bx-id-card heading-icon'></i>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="botName">
+                        Nama Chatbot
+                    </label>
+
+                    <input
+                        type="text"
+                        id="botName"
+                        placeholder="Contoh: MathBot Eksponen"
+                        maxlength="50"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="groupName">
+                        Nama Kelompok
+                    </label>
+
+                    <input
+                        type="text"
+                        id="groupName"
+                        placeholder="Contoh: Kelompok 1"
+                        maxlength="50"
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="className">
+                        Kelas
+                    </label>
+
+                    <select id="className">
+                        <option value="">-- Pilih Kelas --</option>
+                        <option value="X TKJ">X TKJ</option>
+                        <option value="XI TKJ">XI TKJ</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="material">
+                        Materi
+                    </label>
+
+                    <select id="material">
+
+                        <option value="">
+                            -- Pilih Materi --
+                        </option>
+
+                        <optgroup label="Kelas X">
+                            <option value="Eksponen">
+                                Eksponen
+                            </option>
+
+                            <option value="Barisan dan Deret Aritmatika">
+                                Barisan dan Deret Aritmatika
+                            </option>
+
+                            <option value="Barisan dan Deret Geometri">
+                                Barisan dan Deret Geometri
+                            </option>
+                        </optgroup>
+
+                        <optgroup label="Kelas XI">
+
+                            <option value="Fungsi Komposisi">
+                                Fungsi Komposisi
+                            </option>
+
+                            <option value="Fungsi Invers">
+                                Fungsi Invers
+                            </option>
+
+                        </optgroup>
+
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="form-group full-width">
+                <label for="members">
+                    Anggota Kelompok
+                </label>
+
+                <textarea
+                    id="members"
+                    rows="4"
+                    placeholder="Tuliskan nama anggota kelompok, satu nama per baris."
+                ></textarea>
+
+                <small>
+                    Contoh:
+                    <br>
+                    Rino
+                    <br>
+                    Ahmad
+                    <br>
+                    Budi
+                </small>
+            </div>
+
+
+            <div class="info-box blue">
+                <i class='bx bx-info-circle'></i>
+
+                <div>
+                    <strong>Tujuan proyek</strong>
+
+                    <p>
+                        Buatlah chatbot yang dapat membantu orang lain
+                        mempelajari materi Matematika dari memahami konsep,
+                        menggunakan rumus, melihat contoh, hingga berlatih.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="navigation">
+                <span></span>
+
+                <button class="btn btn-primary" onclick="goToStep(2)">
+                    Lanjut ke Knowledge Base
+                    <i class='bx bx-right-arrow-alt'></i>
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION 2
+        ========================== -->
+        <section class="panel step-panel" id="step2">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="section-number">02</span>
+
+                    <h2>Knowledge Base</h2>
+
+                    <p>
+                        Masukkan pengetahuan yang akan digunakan chatbot
+                        untuk menjawab pertanyaan pengguna.
+                    </p>
+                </div>
+
+                <i class='bx bx-brain heading-icon'></i>
+
+            </div>
+
+
+            <div class="info-box yellow">
+
+                <i class='bx bx-bulb'></i>
+
+                <div>
+
+                    <strong>Ingat!</strong>
+
+                    <p>
+                        Chatbot ini menggunakan sistem
+                        <b>Rule-Based</b>. Artinya, kualitas jawaban chatbot
+                        bergantung pada aturan dan pengetahuan yang kalian masukkan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Rule Form -->
+            <div class="rule-editor">
+
+                <div class="rule-editor-header">
+
+                    <h3 id="ruleFormTitle">
+                        Tambahkan Pengetahuan
+                    </h3>
+
+                    <span class="rule-id" id="editingStatus">
+                        Rule baru
+                    </span>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="keywords">
+                        Kata Kunci
+                    </label>
+
+                    <input
+                        type="text"
+                        id="keywords"
+                        placeholder="Contoh: eksponen, pangkat, bilangan berpangkat"
+                    >
+
+                    <small>
+                        Pisahkan beberapa kata kunci dengan tanda koma.
+                        Gunakan kata yang mungkin digunakan orang lain ketika bertanya.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="questionExample">
+                        Contoh Pertanyaan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="questionExample"
+                        placeholder="Contoh: Apa yang dimaksud dengan eksponen?"
+                    >
+
+                    <small>
+                        Pertanyaan ini membantu kalian mengingat fungsi rule.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Kategori
+                    </label>
+
+                    <select id="category">
+
+                        <option value="Konsep">
+                            🧠 Konsep
+                        </option>
+
+                        <option value="Rumus">
+                            📐 Rumus
+                        </option>
+
+                        <option value="Contoh">
+                            🔢 Contoh
+                        </option>
+
+                        <option value="Latihan">
+                            ✏️ Latihan
+                        </option>
+
+                        <option value="Kesalahan Umum">
+                            ⚠️ Kesalahan Umum
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="response">
+                        Respons Teks Chatbot
+                    </label>
+
+                    <textarea
+                        id="response"
+                        rows="7"
+                        placeholder="Tuliskan jawaban yang akan diberikan chatbot..."
+                    ></textarea>
+
+                    <small>
+                        Boleh diisi teks, gambar, atau keduanya.
+                        Rumus LaTeX tetap dapat digunakan jika diperlukan.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="responseImage">
+                        Gambar Respons <span class="optional-label">(Opsional)</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="responseImage"
+                        accept="image/png,image/jpeg,image/webp,image/gif"
+                        onchange="handleImageSelection(this)"
+                    >
+
+                    <small>
+                        Tambahkan diagram, langkah penyelesaian, grafik, atau contoh soal.
+                        Boleh menggunakan gambar tanpa menulis LaTeX. Maksimal 2 MB.
+                    </small>
+
+                    <div id="imagePreview" class="image-preview hidden">
+                        <img id="imagePreviewImg" src="" alt="Preview gambar respons">
+                        <div class="image-preview-info">
+                            <span id="imagePreviewName"></span>
+                            <button
+                                type="button"
+                                class="btn btn-outline image-remove-button"
+                                onclick="removeResponseImage()"
+                            >
+                                <i class='bx bx-trash'></i>
+                                Hapus gambar
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="rule-actions">
+
+                    <button
+                        class="btn btn-primary"
+                        id="saveRuleButton"
+                        onclick="saveRule()"
+                    >
+                        <i class='bx bx-plus'></i>
+                        Tambah Rule
+                    </button>
+
+                    <button
+                        class="btn btn-outline hidden"
+                        id="cancelEditButton"
+                        onclick="cancelEdit()"
+                    >
+                        Batal Edit
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Rules -->
+            <div class="rules-section">
+
+                <div class="section-title-row">
+
+                    <div>
+                        <h3>Daftar Knowledge Base</h3>
+                        <p>
+                            Semua aturan yang telah kalian buat.
+                        </p>
+                    </div>
+
+                    <span class="counter" id="ruleCounter">
+                        0 Rule
+                    </span>
+
+                </div>
+
+
+                <div id="rulesContainer" class="rules-container">
+
+                    <div class="empty-state">
+
+                        <i class='bx bx-data'></i>
+
+                        <h3>Belum ada knowledge base</h3>
+
+                        <p>
+                            Tambahkan pengetahuan pertama chatbot kalian.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="navigation">
+
+                <button
+                    class="btn btn-outline"
+                    onclick="goToStep(1)"
+                >
+                    <i class='bx bx-left-arrow-alt'></i>
+                    Kembali
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="goToStep(3)"
+                >
+                    Lanjut ke Preview
+                    <i class='bx bx-right-arrow-alt'></i>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION 3
+        ========================== -->
+        <section class="panel step-panel" id="step3">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="section-number">03</span>
+
+                    <h2>Preview Chatbot</h2>
+
+                    <p>
+                        Coba chatbot kalian secara langsung.
+                    </p>
+                </div>
+
+                <i class='bx bx-message-rounded-dots heading-icon'></i>
+
+            </div>
+
+
+            <div class="preview-layout">
+
+                <!-- Chatbot -->
+                <div class="chatbot-preview">
+
+                    <div class="chat-header">
+
+                        <div class="bot-avatar">
+                            <i class='bx bx-bot'></i>
+                        </div>
+
+                        <div>
+                            <h3 id="previewBotName">
+                                MathBot
+                            </h3>
+
+                            <span>
+                                ● Rule-Based Chatbot
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="chatbox"
+                        id="previewChatbox"
+                    >
+
+                        <div class="chat incoming">
+
+                            <div class="chat-avatar">
+                                <i class='bx bx-bot'></i>
+                            </div>
+
+                            <div class="chat-message">
+
+                                <span class="chat-name">
+                                    Chatbot
+                                </span>
+
+                                <p>
+                                    Hai! 👋
+                                    Silakan tanyakan sesuatu tentang materi
+                                    yang sudah dimasukkan ke dalam knowledge base.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chat-input">
+
+                        <textarea
+                            id="previewInput"
+                            rows="1"
+                            placeholder="Ketik pertanyaan di sini..."
+                        ></textarea>
+
+                        <button onclick="sendPreviewMessage()">
+                            <i class='bx bx-send'></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Info -->
+                <div class="preview-info">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue-icon">
+                            <i class='bx bx-data'></i>
+                        </div>
+
+                        <div>
+                            <span>Total Rule</span>
+                            <strong id="previewRuleCount">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box blue">
+
+                        <i class='bx bx-test-tube'></i>
+
+                        <div>
+
+                            <strong>Coba chatbot kalian!</strong>
+
+                            <p>
+                                Gunakan berbagai cara bertanya.
+                                Jangan hanya menguji pertanyaan yang
+                                sama persis dengan contoh pertanyaan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="suggestion-box">
+
+                        <h4>
+                            <i class='bx bx-question-mark'></i>
+                            Contoh pengujian
+                        </h4>
+
+                        <button onclick="useSuggestion(this)">
+                            Apa itu materi ini?
+                        </button>
+
+                        <button onclick="useSuggestion(this)">
+                            Jelaskan rumusnya.
+                        </button>
+
+                        <button onclick="useSuggestion(this)">
+                            Berikan contoh soal.
+                        </button>
+
+                        <button onclick="useSuggestion(this)">
+                            Apa kesalahan yang sering terjadi?
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="navigation">
+
+                <button
+                    class="btn btn-outline"
+                    onclick="goToStep(2)"
+                >
+                    <i class='bx bx-left-arrow-alt'></i>
+                    Kembali
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="goToStep(4)"
+                >
+                    Lanjut ke Testing
+                    <i class='bx bx-right-arrow-alt'></i>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION 4
+        ========================== -->
+        <section class="panel step-panel" id="step4">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="section-number">04</span>
+
+                    <h2>Testing Chatbot</h2>
+
+                    <p>
+                        Uji apakah chatbot dapat mengenali pertanyaan
+                        dan memberikan respons yang sesuai.
+                    </p>
+
+                </div>
+
+                <i class='bx bx-test-tube heading-icon'></i>
+
+            </div>
+
+
+            <div class="testing-layout">
+
+                <!-- Testing form -->
+                <div class="testing-form">
+
+                    <h3>Tambahkan Pertanyaan Uji</h3>
+
+                    <p class="description">
+                        Buat pertanyaan yang akan digunakan untuk menguji chatbot.
+                    </p>
+
+
+                    <div class="form-group">
+
+                        <label for="testQuestion">
+                            Pertanyaan
+                        </label>
+
+                        <textarea
+                            id="testQuestion"
+                            rows="4"
+                            placeholder="Contoh: Mengapa \(2^3 + 2^3\) tidak sama dengan \(2^6\)?"
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-primary full-button"
+                        onclick="runTest()"
+                    >
+                        <i class='bx bx-play'></i>
+                        Uji Pertanyaan
+                    </button>
+
+                </div>
+
+
+                <!-- Test result -->
+                <div class="test-result" id="testResult">
+
+                    <div class="empty-state">
+
+                        <i class='bx bx-search-alt'></i>
+
+                        <h3>Belum ada pengujian</h3>
+
+                        <p>
+                            Masukkan pertanyaan untuk mulai menguji chatbot.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Test history -->
+            <div class="testing-history">
+
+                <div class="section-title-row">
+
+                    <div>
+                        <h3>Riwayat Pengujian</h3>
+
+                        <p>
+                            Gunakan hasil ini untuk menemukan rule yang
+                            masih perlu diperbaiki.
+                        </p>
+                    </div>
+
+                    <span class="counter" id="testCounter">
+                        0 Pengujian
+                    </span>
+
+                </div>
+
+
+                <div id="testHistoryContainer">
+
+                    <div class="empty-state small">
+
+                        <i class='bx bx-history'></i>
+
+                        <p>
+                            Belum ada riwayat pengujian.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="navigation">
+
+                <button
+                    class="btn btn-outline"
+                    onclick="goToStep(3)"
+                >
+                    <i class='bx bx-left-arrow-alt'></i>
+                    Kembali
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="goToStep(5)"
+                >
+                    Lanjut ke Export
+                    <i class='bx bx-right-arrow-alt'></i>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION 5
+        ========================== -->
+        <section class="panel step-panel" id="step5">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="section-number">05</span>
+
+                    <h2>Export Chatbot</h2>
+
+                    <p>
+                        Simpan chatbot kalian menjadi satu file HTML
+                        yang dapat dibuka secara mandiri.
+                    </p>
+
+                </div>
+
+                <i class='bx bx-download heading-icon'></i>
+
+            </div>
+
+
+            <div class="export-card">
+
+                <div class="export-icon">
+                    <i class='bx bx-bot'></i>
+                </div>
+
+                <h2 id="exportBotName">
+                    MathBot
+                </h2>
+
+                <p id="exportDescription">
+                    Chatbot Pembelajaran Matematika
+                </p>
+
+
+                <div class="export-summary">
+
+                    <div>
+                        <span>Kelompok</span>
+                        <strong id="summaryGroup">
+                            -
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Kelas</span>
+                        <strong id="summaryClass">
+                            -
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Materi</span>
+                        <strong id="summaryMaterial">
+                            -
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Knowledge Base</span>
+                        <strong id="summaryRules">
+                            0 Rule
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="checklist">
+
+                    <h3>
+                        <i class='bx bx-check-shield'></i>
+                        Sebelum mengumpulkan
+                    </h3>
+
+                    <label>
+                        <input type="checkbox">
+                        <span>
+                            Chatbot memiliki pengetahuan konsep yang benar.
+                        </span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        <span>
+                            Chatbot memiliki rumus dan penjelasan yang benar.
+                        </span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        <span>
+                            Chatbot memiliki contoh dan latihan.
+                        </span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        <span>
+                            Chatbot telah diuji menggunakan pertanyaan lain.
+                        </span>
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        <span>
+                            Kesalahan respons chatbot telah diperbaiki.
+                        </span>
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary export-button"
+                    onclick="exportChatbot()"
+                >
+                    <i class='bx bx-download'></i>
+                    Export Chatbot (.html)
+                </button>
+
+
+                <p class="export-note">
+                    File hasil export dapat dibuka langsung menggunakan
+                    browser tanpa PHP, database, atau server.
+                </p>
+
+            </div>
+
+
+            <div class="navigation">
+
+                <button
+                    class="btn btn-outline"
+                    onclick="goToStep(4)"
+                >
+                    <i class='bx bx-left-arrow-alt'></i>
+                    Kembali ke Testing
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="saveProject()"
+                >
+                    <i class='bx bx-save'></i>
+                    Simpan Proyek
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <strong>
+                    MathBot Builder
+                </strong>
+
+                <span>
+                    Proyek UTS Matematika — TKJ
+                </span>
+            </div>
+
+            <div>
+                <span>
+                    Rule-Based Learning
+                </span>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
